@@ -6,7 +6,7 @@
 
 <!-- Команди або запити, якими рев'юер переконається, що зміна працює. -->
 
-## Definition of Done ([standards/definition-of-done.md](../standards/definition-of-done.md))
+## Definition of Done (`standards/definition-of-done.md`)
 
 - [ ] `npm run verify` зелений; hook-и не обходились
 - [ ] Код у правильному шарі (routes / services / repositories / domain)
