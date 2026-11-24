@@ -1,0 +1,56 @@
+{
+  "name": "uw-dispatcher",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Uptime & Webhook Dispatcher: monitors endpoints, tracks incidents and delivers alerts with retries",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev:api": "tsx watch --env-file-if-exists=.env src/app/api.main.ts | pino-pretty",
+    "build": "tsc -p tsconfig.build.json",
+    "start:api": "node dist/app/api.main.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "deps:check": "depcruise src --config .dependency-cruiser.cjs",
+    "deps:graph": "depcruise src --config .dependency-cruiser.cjs --output-type mermaid --include-only \"^src\" --exclude \"\\.test\\.ts$\" --collapse \"^src/(app|api|platform|shared|modules/[^/]+)\"",
+    "unused:check": "knip",
+    "docs:check": "tsx scripts/check-docs.ts",
+    "test": "vitest run --project unit",
+    "test:smoke": "vitest run --project smoke",
+    "fix": "prettier --write . && eslint . --fix",
+    "verify:fast": "npm run format:check && npm run lint && npm run typecheck && npm run deps:check && npm run docs:check",
+    "verify": "npm run verify:fast && npm run unused:check && npm run test && npm run build && npm run test:smoke",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "fastify": "^5.12.8",
+    "pino": "^10.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.2",
+    "@vitest/coverage-v8": "^5.1.1",
+    "dependency-cruiser": "^18.9.0",
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.14.0",
+    "husky": "^9.1.7",
+    "knip": "^6.48.0",
+    "lint-staged": "^17.6.2",
+    "pino-pretty": "^13.2.0",
+    "prettier": "^3.10.1",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.74.0",
+    "vitest": "^5.1.1"
+  }
+}
