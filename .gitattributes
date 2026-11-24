@@ -1,0 +1,4 @@
+# Normalize line endings: the repo is developed on Windows and checked on Linux CI.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
