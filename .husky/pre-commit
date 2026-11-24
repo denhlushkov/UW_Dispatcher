@@ -1,0 +1,6 @@
+# Fast gate (< ~15 s): staged files must be formatted and lint-clean; the whole
+# project must typecheck, respect module boundaries and documentation standards.
+npx lint-staged
+npm run typecheck
+npm run deps:check
+npm run docs:check

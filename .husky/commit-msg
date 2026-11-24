@@ -1,0 +1,2 @@
+# Conventional Commits with project scopes (standards/code-style.md).
+npx --no -- commitlint --edit "$1"
